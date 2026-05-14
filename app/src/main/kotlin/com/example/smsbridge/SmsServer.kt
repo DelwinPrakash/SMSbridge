@@ -2,12 +2,21 @@ package com.example.smsbridge
 
 import fi.iki.elonen.NanoHTTPD
 import org.json.JSONObject
+import com.sun.org.apache.xml.internal.serializer.Method
 
 class SmsServer(port: Int) : NanoHTTPD(port) {
 
     override fun serve(session: IHTTPSession): Response {
 
         return try {
+
+            if (session.uri == "/health") {
+                return newFixedLengthResponse(
+                    Response.Status.OK,
+                    "application/json",
+                    """{"status":"running"}"""
+                )
+            }
 
             if (session.method == Method.POST &&
                 session.uri == "/send-sms") {
