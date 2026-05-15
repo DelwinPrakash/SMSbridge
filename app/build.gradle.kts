@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.smsbridge"
+    namespace = "com.delwin.smsbridge"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.smsbridge"
+        applicationId = "com.delwin.smsbridge"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
